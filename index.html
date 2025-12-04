@@ -38,7 +38,19 @@ async function fetchMatches() {
         const response = await fetch('https://api.volleyballdatabased.com/matches');
         const data = await response.json();
         const timestamp = new Date().toLocaleTimeString();
-        output.textContent = `Last updated: ${timestamp}\n\n${JSON.stringify(data, null, 2)}`;
+        
+        // Format matches nicely
+        let formatted = `Last updated: ${timestamp}\n\n`;
+        formatted += `Total matches: ${data.length}\n\n`;
+        
+        data.forEach((match, index) => {
+            formatted += `Match ${index + 1}:\n`;
+            formatted += `  ${match.team1} vs ${match.team2}\n`;
+            formatted += `  Time: ${match.time}\n`;
+            formatted += `  Location: ${match.location}\n\n`;
+        });
+        
+        output.textContent = formatted;
     } catch (error) {
         output.innerHTML = `<span class="error">Error: ${error.message}</span>`;
     }
