@@ -49,10 +49,10 @@
 
           data.forEach((match, index) => {
             formatted += `<a href="${match.match_url}">Match ${index + 1}</a>:\n`;
-            formatted += `  ${match.t1} vs ${match.t2}\n`;
+            formatted += `  Match: ${match.t1} vs ${match.t2}\n`;
             formatted += `  Sets Won: ${match.t1_sets_won} - ${match.t2_sets_won}\n`;
-            formatted += `  Scores: ${match.t1_set1}-${match.t2_set1}; ${match.t1_set2}-${match.t2_set2}; ${match.t1_set3}-${match.t2_set3}; ${match.t1_set4}-${match.t2_set4}; ${match.t1_set5}-${match.t2_set5}
-            \n\n`;
+            formatted += `  Scores: ${match.t1_set1}-${match.t2_set1}; ${match.t1_set2}-${match.t2_set2}; ${match.t1_set3}-${match.t2_set3}; ${match.t1_set4}-${match.t2_set4}; ${match.t1_set5}-${match.t2_set5}\n`;
+            formatted += `  Date/Time: ${match.last_updated}\n\n`;
           });
 
           output.innerHTML = formatted;
