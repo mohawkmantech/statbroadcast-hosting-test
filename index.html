@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volleyball Matches</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+      }
+      pre {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .error {
+        color: #c00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Volleyball Matches Test</h1>
+    <pre id="output">Loading...</pre>
+
+    <script>
+      fetch("https://api.volleyballdatabased.com/matches")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("output").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        })
+        .catch((error) => {
+          document.getElementById("output").innerHTML =
+            `<span class="error">Error: ${error.message}</span>`;
+        });
+    </script>
+  </body>
+</html>
